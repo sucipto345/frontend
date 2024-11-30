@@ -1,0 +1,135 @@
+.count-section {
+  background-image: url("../asset/images/IMG_20240818_134421_313.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  padding: 20px; /* Padding to ensure content doesn't touch edges */
+  z-index: 1;
+  font-family: "poppins", sans-serif;
+}
+
+.count-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1; /* Ensure the overlay is behind the content */
+}
+
+.count-section h2 {
+  font-size: 1;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 1s forwards;
+  font-family: "poppins", sans-serif;
+}
+
+.countdown {
+  margin-top: 400px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-family: "poppins", sans-serif;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "poppins", sans-serif;
+}
+
+.countdown-number {
+  font-size: 1em;
+  color: #ffffff;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 1.5s forwards;
+  font-family: "poppins", sans-serif;
+}
+
+.countdown-label {
+  font-size: 1em;
+  color: white;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 2s forwards;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  background-color: #ffffff91;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #ffffff7e;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .count-section h2 {
+    font-size: 2em;
+  }
+
+  .countdown-number {
+    font-size: 1.5em;
+  }
+
+  .countdown-label {
+    font-size: 0.9em;
+  }
+
+  .btn {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .count-section h2 {
+    font-size: 1.5em;
+  }
+
+  .countdown-number {
+    font-size: 2em;
+  }
+
+  .countdown-label {
+    font-size: 0.8em;
+  }
+
+  .btn {
+    font-size: 0.9em;
+    padding: 8px 15px;
+  }
+}

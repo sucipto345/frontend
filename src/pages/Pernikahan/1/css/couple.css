@@ -1,0 +1,168 @@
+.couple-section {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 1; /* Ensure content is on top */
+  animation: changeBackground 10s infinite; /* 20s for a smooth transition */
+  overflow: hidden; /* To ensure content doesn't overflow */
+  font-family: "poppins", sans-serif;
+}
+
+@keyframes changeBackground {
+  0% {
+    background-image: url("../asset/background/gambar1.jpg");
+  }
+  50% {
+    background-image: url("../asset/background/gambar3.jpg");
+  }
+  100% {
+    background-image: url("../asset/background/gambar2.jpg");
+  }
+}
+
+.couple-section::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%; /* Adjust the height as needed */
+  background: linear-gradient(to top, rgb(0, 0, 0), transparent);
+  z-index: -1; /* Ensure overlay is behind content */
+
+  
+}
+
+
+.couple-section h3 {
+  /* position: absolute; */
+  top: 70px; /* Distance from the top edge */
+  left: 20px;
+  margin: 0;
+  font-size: 2em;
+  color: #ffffff;
+  font-family: "poppins", sans-serif;
+  padding-top: 20px;
+}
+
+.couple-section h1 {
+  /* position: absolute; */
+  top: 30px; /* Distance from the top edge */
+  left: 20px;
+  margin: 0;
+  font-size: 2.5em;
+  color: #fcbd00;
+}
+
+.couple-section h4 {
+  position: absolute;
+  top: 140px; /* Distance from the top edge */
+  left: 20px;
+  margin: 0;
+  font-size: 1.3em;
+  color: #ffffff;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .couple-section h1 {
+    font-size: 2.5em;
+    left: 10px;
+    top: 10px;
+  }
+
+  .couple-section h3 {
+    font-size: 1.5em;
+    left: 10px;
+    top: 60px;
+  }
+
+  .couple-section h4 {
+    font-size: 1.5em;
+    left: 10px;
+    top: 135px;
+  }
+}
+
+@media (max-width: 480px) {
+  .couple-section h1 {
+    font-size: 2em;
+    left: 5px;
+    top: 5px;
+  }
+
+  .couple-section h3 {
+    font-size: 1.2em;
+    left: 5px;
+    top: 40px;
+  }
+
+  .couple-section h4 {
+    font-size: 1.2em;
+    left: 5px;
+    top: 10px;
+  }
+}
+
+/* Countdown container styles */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adds spacing between each countdown item */
+  margin-top: 20px;
+  flex-wrap: wrap; /* Makes it responsive for smaller screens */
+}
+
+/* Countdown item styles */
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 60px; /* Ensures each block has a minimum width */
+}
+
+/* Countdown number styles */
+.countdown-number {
+  font-size: 1rem; /* Large numbers */
+  font-weight: bold;
+  color: white;
+}
+
+/* Countdown label styles */
+.countdown-label {
+  font-size: 0.8rem; /* Smaller labels below numbers */
+  color: white;
+  text-transform: uppercase; /* Makes the label text uppercase */
+  margin-top: 5px; /* Adds a bit of space between the number and label */
+}
+
+/* Save the Date button styles */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #e91e63;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #d81b60; /* Darkens the button color on hover */
+}

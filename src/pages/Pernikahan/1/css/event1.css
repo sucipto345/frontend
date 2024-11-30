@@ -1,0 +1,71 @@
+.event-section1 {
+  background-image: url("../asset/background/gambar7.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Dark overlay effect at the top */
+.event-section1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3%; /* Adjust height as needed */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.982), transparent);
+  z-index: -1; /* Ensure overlay is behind the content */
+}
+
+/* Dark overlay effect at the bottom */
+.event-section1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%; /* Adjust height as needed */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  z-index: -1; /* Ensure overlay is behind content */
+}
+
+
+
+.event-section1 h1 {
+  font-size: 30px;
+  margin: 0;
+  animation: fadeIn 1s ease-in-out 2s forwards;
+}
+
+.event-section1 p {
+  font-size: 20px;
+  letter-spacing: 2px;
+  word-wrap: break-word; /* Ensures long words or URLs wrap to the next line */
+  overflow-wrap: break-word; /* Same as word-wrap for better compatibility */
+  text-align: center; /* Ensures text alignment looks neat in the center */
+  max-width: 80%; /* Limits the width of the text container to 80% of the parent element */
+  margin: 0 auto; /* Centers the paragraph block */
+  padding: 0 15px;
+  animation: fadeIn 1s ease-in-out 2s forwards;
+}
+
+/* Keyframes for fadeIn effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

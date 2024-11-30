@@ -1,0 +1,156 @@
+.cover {
+  background-image: url("../asset/background/gambar1.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  font-family: "poppins", sans-serif;
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.cover-content {
+  transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+#invitation {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  min-height: 100vh;
+  z-index: 1; /* Keep invitation below the cover during transition */
+}
+
+#invitation.show {
+  display: block;
+  opacity: 1;
+}
+
+.section {
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.section.visible {
+  opacity: 1;
+}
+
+.wedding-title {
+  font-size: 1em;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  font-family: "poppins,sans-serif";
+  font-weight: 700;
+}
+.couple-names {
+  font-size: 32px;
+  color: #fcbd00;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.5s forwards;
+  font-family: "poppins,sans-serif";
+  font-weight: 700;
+  line-height: 1;
+}
+.wedding-date {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1s forwards;
+  margin-bottom: 10rem;
+  font-family: "Courier New", Courier, monospace;
+}
+.dear-guest {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1.5s forwards;
+  font-family: "poetseone";
+}
+
+.dear-guest-bold {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 2s forwards;
+  font-family: "poetseone";
+}
+.open-inv-btn {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  background-color: rgba(255, 255, 255, 0.26);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 2s forwards;
+  border-radius: 2rem;
+}
+.open-inv-btn:hover {
+  background-color: rgba(255, 255, 255, 0.568);
+  transform: scale(1.05);
+}
+/* @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+@media (max-width: 768px) {
+  .cover {
+    background-position: top;
+  }
+
+  .wedding-title {
+    font-size: 1em;
+    letter-spacing: 0.2em;
+  }
+
+  .couple-names {
+    font-size: 34px;
+    font-family: popins, sans-serif;
+    font-weight: 700;
+  }
+
+  .wedding-date {
+    font-size: 1.2em;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  .dear-guest {
+    font-size: 1em;
+    font-family: poppins, sans-serif;
+  }
+
+  .dear-guest-bold {
+    font-size: 1em;
+    font-weight: bold;
+    font-family: poppins, sans-serif;
+    margin-bottom: 10px;
+  }
+
+  .open-inv-btn {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+}

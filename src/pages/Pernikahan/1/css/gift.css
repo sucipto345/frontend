@@ -1,0 +1,141 @@
+/* Container for the gift section */
+.container-gift {
+  background-image: url("../asset/background/gambar9.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  padding: 40px 20px; /* Added padding for better spacing */
+  z-index: 1;
+  font-family: "poppins", sans-serif;
+}
+
+/* Overlay effect to darken the background */
+.container-gift::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Heading style */
+h1 {
+  color: #ffffff;
+  font-size: 1.8em; /* Reduced font size */
+  margin-bottom: 15px; /* Reduced margin for better spacing */
+}
+
+/* Container for gift options */
+.gift-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px; /* Reduced gap */
+  margin-top: 15px; /* Reduced margin for better spacing */
+  margin-bottom: 15px; /* Reduced margin for better spacing */
+}
+
+/* Gift option box styling */
+.gift-option {
+  background-color: #f9f9f9;
+  padding: 10px; /* Reduced padding */
+  border-radius: 8px; /* Reduced border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Reduced box shadow */
+  width: 12rem; /* Reduced width */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+  margin-bottom: 30px; /* Reduced margin for better spacing */
+}
+
+/* Hover effect on gift options */
+.gift-option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Reduced shadow on hover */
+}
+
+/* Button inside the gift option */
+.gift-option button {
+  background-color: #fcbd00b9;
+  padding: 8px; /* Reduced padding */
+  border-radius: 4px; /* Reduced border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Reduced box shadow */
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gift-option button:hover {
+  transform: translateY(-3px); /* Slightly less transform on hover */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Adjusted shadow on hover */
+  background-color: #fcbd00;
+  color: white;
+}
+
+/* Gift image styling */
+.gift-image {
+  width: auto; /* Maintain aspect ratio */
+  max-width: 60px; /* Reduced max-width */
+  max-height: 60px; /* Reduced max-height */
+  margin: 8px 0; /* Reduced margin */
+}
+
+/* Paragraph text inside gift option */
+.gift-option p {
+  color: #777;
+  font-size: 0.8em; /* Slightly smaller font size */
+  line-height: 1.4;
+}
+
+/* Responsive styles for tablet */
+@media (max-width: 1024px) {
+  .gift-option {
+    width: calc(50% - 15px); /* Adjusted width */
+    padding: 8px; /* Reduced padding */
+  }
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .gift-options {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Reduced gap */
+  }
+
+  .gift-option {
+    width: 80%;
+    margin: 0;
+    padding: 15px; /* Adjusted padding */
+  }
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6em; /* Reduced font size for mobile */
+  }
+
+  p {
+    font-size: 0.8em; /* Slightly smaller font size */
+  }
+
+  .gift-option {
+    width: 100%;
+    padding: 6px; /* Reduced padding for mobile screens */
+  }
+
+  .gift-options {
+    gap: 8px; /* Adjusted gap */
+  }
+}

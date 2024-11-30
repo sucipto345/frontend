@@ -1,0 +1,59 @@
+/* Container for filter section */
+.filter-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    font-family: "poppins", sans-serif;
+  }
+  
+  /* Heading style */
+  .filter-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Image styling */
+  .filter-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Description paragraph */
+  .filter-section p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Button styling */
+  .filter-button {
+    display: inline-block;
+    background-color: #3f729b; /* Instagram-like color */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+  }
+  
+  .filter-button:hover {
+    background-color: #285f75; /* Darker shade on hover */
+  }
+  
+  /* Font Awesome icon styling */
+  .filter-button i {
+    margin-right: 8px;
+  }
+  

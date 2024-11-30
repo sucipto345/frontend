@@ -1,0 +1,138 @@
+.profile-groom {
+  background-image: url("../asset/background/pria2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: flex-end; /* Align items to the bottom */
+  justify-content: flex-start; /* Align items to the left */
+  padding: 20px; /* Padding for spacing from edges */
+  text-align: left; /* Align text to the left */
+  z-index: 1;
+  font-family: "poppins", sans-serif;
+}
+
+/* Dark overlay effect at the top */
+.profile-groom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30%; /* Adjust height as needed for the top overlay */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+  z-index: -1; /* Ensure overlay is behind content */
+}
+
+/* Dark overlay effect at the bottom */
+.profile-groom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+    height: 30%; /* Adjust height as needed for the bottom overlay */
+    background: linear-gradient(to top, rgb(0, 0, 0), transparent);
+  z-index: -1; /* Ensure overlay is behind content */
+}
+
+.profile-groom h2 {
+  font-size: 1.5em;
+  color: #ffffff;
+  margin: 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 2s forwards;
+}
+
+.profile-groom h1 {
+  font-size: 2.5em;
+  color: #ffffff;
+  margin: 10px 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 2.5s forwards;
+}
+
+.profile-groom p {
+  font-size: 1.2em;
+  margin: 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 3s forwards;
+  font-family: "poppins, sans-serif";
+  margin-bottom: 10px;
+}
+
+.profile-groom .name {
+  border-bottom: 2px solid #ffffff; /* White underline */
+  color: #fcbd00;
+}
+/* Keyframes for fadeIn effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles for Groom Profile */
+@media (max-width: 768px) {
+  .profile-groom {
+    padding: 10px;
+  }
+
+  .profile-groom h1 {
+    font-size: 2em;
+  }
+  .profile-groom h2 {
+    font-size: 1.2em;
+    font-family: "poppins", sans-serif;
+  }
+
+  .profile-groom p {
+    font-size: 1em;
+  }
+
+  .quote {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-groom {
+    padding: 5px;
+  }
+
+  .profile-groom h1 {
+    font-size: 1.5em;
+  }
+
+  .profile-groom h2 {
+    font-size: 1em;
+  }
+
+  .profile-groom p {
+    font-size: 0.9em;
+  }
+
+  .quote {
+    font-size: 0.8em;
+  }
+}
+
+.instagram-link-wedding-two {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  transition: 0.5s;
+}
+
+.instagram-link-wedding-two:hover {
+  background-color: #ffffff91;
+  padding: 6px;
+  border-radius: 6px;
+}

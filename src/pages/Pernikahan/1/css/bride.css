@@ -1,0 +1,139 @@
+.profile-bride {
+  background-image: url("../asset/background/wanita2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: flex-end; /* Align items to the bottom */
+  justify-content: flex-end; /* Align items to the right */
+  padding: 20px; /* Padding for spacing from edges */
+  text-align: right; /* Align text to the right */
+  z-index: 1;
+}
+
+/* Dark overlay effect at the bottom */
+.profile-bride::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  height: 2%; /* Adjust height as needed */
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.961), transparent);
+  z-index: -1; /* Ensure the overlay is behind the content */
+}
+
+
+.profile-content {
+  position: relative;
+  z-index: 1; /* Ensure content is above the overlay */
+  margin-bottom: 80px;
+}
+
+.profile-bride h2 {
+  font-size: 1.5em;
+  color: #ffffff;
+  margin: 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 2s forwards;
+}
+
+.profile-bride h1 {
+  font-size: 2.5em;
+  color: #ffffff;
+  margin: 10px 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 2.5s forwards;
+}
+
+.profile-bride .name {
+  border-bottom: 2px solid #ffffff; /* White underline */
+  color: #fcbd00;
+}
+
+.profile-bride p {
+  font-size: 1.2em;
+  margin: 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out 3s forwards;
+  font-family: "poppins, sans-serif";
+  margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .profile-bride {
+    padding: 10px;
+  }
+  .profile-bride h1 {
+    font-size: 2em;
+  }
+
+  .profile-bride h2 {
+    font-size: 1.2em;
+  }
+
+  .profile-bride p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-bride {
+    padding: 5px;
+  }
+
+  .profile-bride h2 {
+    font-size: 1em;
+  }
+
+  .profile-bride h1 {
+    font-size: 1.5em;
+  }
+
+  .profile-bride p {
+    font-size: 0.9em;
+  }
+}
+
+.instagram-link-wedding-one {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  transition: 0.5s;
+}
+a {
+  color: #f0f0f0;
+}
+
+.instagram-link-wedding-one:hover {
+  background-color: #ffffff91;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+/* Keyframes for fadeIn effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

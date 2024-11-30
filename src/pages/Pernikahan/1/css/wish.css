@@ -1,0 +1,97 @@
+/* Background and Section Styling */
+.wish-section {
+  background-image: url("../asset/background/gambar8.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+  z-index: 1;
+  font-family: "poppins", sans-serif;
+}
+
+.wish-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* Adjust maximum width */
+  background: rgba(255, 255, 255, 0.9); /* Light background for readability */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  max-width: 100%; /* Ensure fields are full width within form */
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+textarea {
+  height: 150px; /* Increase height for better visibility */
+  resize: vertical; /* Allow vertical resizing */
+}
+
+button {
+  background-color: #fcbd00;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #f9a900; /* Slightly darker color on hover */
+}
+
+/* Container for Messages */
+.messages-wrapper {
+  overflow-y: auto; /* Allow vertical scrolling */
+  max-height: 500px; /* Adjust height as needed */
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; /* Space above messages */
+}
+
+#messages {
+  display: flex;
+  flex-direction: column; /* Arrange messages vertically */
+}
+
+.message {
+  padding: 12px;
+  margin-bottom: 15px; /* Space between messages */
+  border-radius: 8px;
+  background: #ffffff; /* White background for messages */
+  color: #333333; /* Dark text color for readability */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
