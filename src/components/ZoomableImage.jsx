@@ -5,16 +5,27 @@ const ZoomableImage = ({ src, alt, className, isPortrait }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [touchStart, setTouchStart] = useState(null);
   const [initialDistance, setInitialDistance] = useState(null);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
   const imageRef = useRef(null);
+
+  // Deteksi perangkat mobile
+  const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  };
 
   // Fungsi untuk menghitung jarak antara dua sentuhan
   const getDistance = (touch1, touch2) => {
     return Math.hypot(touch1.pageX - touch2.pageX, touch1.pageY - touch2.pageY);
   };
 
-  // Handler sentuhan dimulai
+  // Handler sentuhan dimulai (mobile)
   const handleTouchStart = (e) => {
+    if (!isMobile()) return;
+
     if (e.touches.length === 1) {
       // Satu jari untuk pergerakan
       setTouchStart({
@@ -27,8 +38,10 @@ const ZoomableImage = ({ src, alt, className, isPortrait }) => {
     }
   };
 
-  // Handler pergerakan sentuhan
+  // Handler pergerakan sentuhan (mobile)
   const handleTouchMove = (e) => {
+    if (!isMobile()) return;
+
     if (e.touches.length === 1 && touchStart && scale > 1) {
       // Geser gambar
       const touch = e.touches[0];
@@ -48,8 +61,10 @@ const ZoomableImage = ({ src, alt, className, isPortrait }) => {
     }
   };
 
-  // Handler sentuhan berakhir
+  // Handler sentuhan berakhir (mobile)
   const handleTouchEnd = () => {
+    if (!isMobile()) return;
+
     setTouchStart(null);
     setInitialDistance(null);
 
@@ -59,13 +74,37 @@ const ZoomableImage = ({ src, alt, className, isPortrait }) => {
     }
   };
 
-  // Reset zoom dengan double tap
-  const handleDoubleClick = () => {
-    if (scale === 1) {
-      setScale(2);
+  // Handler mouse untuk desktop
+  const handleMouseMove = (e) => {
+    if (isMobile()) return;
+
+    if (isZoomed && imageRef.current) {
+      const rect = imageRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      setZoomPosition({ x, y });
+    }
+  };
+
+  // Toggle zoom untuk desktop
+  const toggleZoom = () => {
+    if (isMobile()) return;
+    setIsZoomed(!isZoomed);
+    setScale(isZoomed ? 1 : 2);
+    setPosition({ x: 0, y: 0 });
+  };
+
+  // Reset zoom dengan double tap/click
+  const handleDoubleInteraction = () => {
+    if (isMobile()) {
+      if (scale === 1) {
+        setScale(2);
+      } else {
+        setScale(1);
+        setPosition({ x: 0, y: 0 });
+      }
     } else {
-      setScale(1);
-      setPosition({ x: 0, y: 0 });
+      toggleZoom();
     }
   };
 
@@ -76,13 +115,17 @@ const ZoomableImage = ({ src, alt, className, isPortrait }) => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      onDoubleClick={handleDoubleClick}
+      onMouseMove={handleMouseMove}
+      onClick={toggleZoom}
+      onDoubleClick={handleDoubleInteraction}
     >
       <div
         className="relative will-change-transform transition-transform duration-300"
         style={{
           transform: `scale(${scale}) translate(${position.x}px, ${position.y}px)`,
-          transformOrigin: "center center",
+          transformOrigin: isMobile()
+            ? "center center"
+            : `${zoomPosition.x}% ${zoomPosition.y}%`,
         }}
       >
         <img
@@ -93,17 +136,26 @@ const ZoomableImage = ({ src, alt, className, isPortrait }) => {
             ${className} 
             ${
               isPortrait
-                ? "max-h-[55vh] sm:max-h-[85vh] w-auto"
-                : "max-w-[55vw] sm:max-w-[85vw] h-auto"
+                ? "max-h-[70vh] sm:max-h-[65vh] w-auto"
+                : "max-w-[70vw] sm:max-w-[65vw] h-auto"
             }
+            ${isMobile() ? "" : isZoomed ? "transform scale-150" : ""}
           `}
           draggable="false"
+          style={
+            !isMobile() && isZoomed
+              ? {
+                  cursor: "zoom-out",
+                  transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
+                }
+              : { cursor: "zoom-in" }
+          }
         />
       </div>
 
-      {scale > 1 && (
+      {(scale > 1 || isZoomed) && (
         <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded">
-          Zoom: {Math.round(scale * 100)}%
+          Zoom: {Math.round(isMobile() ? scale * 100 : isZoomed ? 150 : 100)}%
         </div>
       )}
     </div>
