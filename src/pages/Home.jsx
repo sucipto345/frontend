@@ -1,79 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import designIcon from "../assets/icons/art.png";
 import websiteIcon from "../assets/icons/coding.png";
 import animationIcon from "../assets/icons/animate.png";
 import feedsIcon from "../assets/icons/story.png";
-import CommingSoon from "../assets/Slider/coming-soon.png";
 import ContactUs from "../assets/icons/messenger.png";
-import "./css/SliderAnimation.css";
+import Slider from "../components/Slider";
 
 const Home = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [slideDirection, setSlideDirection] = useState("");
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const Slider = [
-    {
-      url: "#",
-      src: CommingSoon,
-      name: "Coming Soon 1",
-    },
-    {
-      url: "#",
-      src: CommingSoon,
-      name: "Coming Soon 2",
-    },
-  ];
-
-  const [animationClass, setAnimationClass] = useState("");
-
-  const handleNext = () => {
-    if (isAnimating || Slider.length === 0) return;
-    setIsAnimating(true);
-    setAnimationClass("slide-left"); // Set the animation class
-
-    // Set a timeout to transition to the next slide
-    setTimeout(() => {
-      setActiveIndex((prev) => (prev === Slider.length - 1 ? 0 : prev + 1));
-      setIsAnimating(false);
-      setAnimationClass(""); // Reset animation class after transition
-    }, 300); // Match this with your animation duration
-  };
-
-  const handlePrev = () => {
-    if (isAnimating || Slider.length === 0) return;
-    setIsAnimating(true);
-    setAnimationClass("slide-right"); // Set the animation class
-
-    // Set a timeout to transition to the previous slide
-    setTimeout(() => {
-      setActiveIndex((prev) => (prev === 0 ? Slider.length - 1 : prev - 1));
-      setIsAnimating(false);
-      setAnimationClass(""); // Reset animation class after transition
-    }, 300); // Match this with your animation duration
-  };
-
-  // Automatic slider functionality
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 10000); // Change slide every 10 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
-
-  // Automatic slider functionality
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000); // Change slide every 10 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
-
-  const activeMedia = Slider[activeIndex];
-
   const services = [
     {
       icon: designIcon,
@@ -124,29 +58,9 @@ const Home = () => {
 
   return (
     <div className="relative z-0">
-      <div className="flex flex-col justify-center items-center w-full">
-        <p className="text-white text-4xl sm:text-5xl font-bold fadeIn pt-4 mb-12">
-          InStayCreative
-        </p>
-
-        {/* Slider */}
-        <div
-          className={`transform transition-all duration-300 ease-in-out ${animationClass}`}
-        >
-          <a
-            href={activeMedia.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col justify-center items-center w-full rounded-lg text-center transition-all duration-300 hover:scale-105"
-          >
-            <img
-              src={activeMedia.src}
-              alt={activeMedia.name}
-              className="w-full h-full object-cover rounded-lg mb-4"
-            />
-            <div className="text-2xl font-bold mb-3">{activeMedia.name}</div>
-          </a>
-        </div>
+      <div className="flex flex-col justify-center items-center w-full mt-10 -mb-10">
+        {/* Kurangi margin bottom */}
+        <Slider />
       </div>
 
       {/* Services Navigation */}

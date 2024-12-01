@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Masonry from "react-masonry-css";
 import ZoomableImage from "../components/ZoomableImage";
-// import Template from "#";
-// import Animaton from "#";
-// import Feeds from "#";
 import Design1 from "../assets/project/Design/ai[casing].jpg";
 import Design2 from "../assets/project/Design/Apoter-Dalam-IPE-CE[poster].jpg";
 import Design3 from "../assets/project/Design/Barber_Shop[spanduk].jpg";
@@ -18,49 +15,33 @@ import Design10 from "../assets/project/Design/putri-yasmin-nadia[wallpaper].jpg
 import Design11 from "../assets/project/Design/recuitment-pasudam[poster].jpg";
 import Design12 from "../assets/project/Design/RizzChoco[kemasan].jpg";
 
-// const navigation = [
-//   {
-//     src: Template,
-//     text: "Template",
-//     path: "/template",
-//   },
-//   {
-//     src: Animaton,
-//     text: "Animaton",
-//     path: "/animation",
-//   },
-//   {
-//     src: Feeds,
-//     text: "Feeds",
-//     path: "/feeds",
-//   },
-// ];
+// Dapatkan unique hashtags dari images
 
 const images = [
   {
     src: Design1,
-    hashtag: "#AI",
+    hashtag: "#Casing",
     category: "Design",
     worker: "Worker A",
     client: "Client X",
   },
   {
     src: Design2,
-    hashtag: "#Health",
+    hashtag: "#Poster",
     category: "Design",
     worker: "Worker B",
     client: "Client Y",
   },
   {
     src: Design3,
-    hashtag: "#Barber",
+    hashtag: "#Spanduk",
     category: "Design",
     worker: "Worker C",
     client: "Client Z",
   },
   {
     src: Design4,
-    hashtag: "#Barber",
+    hashtag: "#Spanduk",
     category: "Design",
     worker: "Worker C",
     client: "Client Z",
@@ -74,7 +55,7 @@ const images = [
   },
   {
     src: Design6,
-    hashtag: "#Cute",
+    hashtag: "#Art",
     category: "Design",
     worker: "Worker E",
     client: "Client V",
@@ -133,6 +114,27 @@ const breakpointColumns = {
 const Design = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [selectedHashtag, setSelectedHashtag] = useState(null);
+
+  // Dapatkan unique hashtags dari images
+  const uniqueHashtags = [...new Set(images.map((image) => image.hashtag))];
+
+  // Filter gambar berdasarkan hashtag
+  const filteredImages = selectedHashtag
+    ? images.filter((image) => image.hashtag === selectedHashtag)
+    : images;
+
+  // Buat navigation dinamis
+  const navigation = [
+    {
+      text: "All",
+      action: () => setSelectedHashtag(null),
+    },
+    ...uniqueHashtags.map((hashtag) => ({
+      text: hashtag.replace("#", ""),
+      action: () => setSelectedHashtag(hashtag),
+    })),
+  ];
 
   const openModal = (image) => setSelectedImage(image);
   const closeModal = () => {
@@ -144,43 +146,50 @@ const Design = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white pb-24">
-      <div className="flex justify-between w-full py-4">
-        <Link to="/" className="text-sm cursor-pointer sm:text-lg pl-2">
+      <div className="flex justify-between w-full py-10 px-5">
+        <Link
+          to="/"
+          className="text-sm cursor-pointer sm:text-lg pl-2 font-bold"
+        >
           ← Back to Home
         </Link>
-        {/* {navigation.map((navigation, index) => (
-          <Link
-            to={navigation.path}
-            key={index}
-            className="flex flex-col items-center justify-center text-center space-y-3 hover:bg-gray-50 rounded-lg transition-colors duration-200"
-          >
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-              <img
-                src={navigation.src}
-                alt={navigation.text}
-                className="w-4 h-4"
-              />
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="font-medium text-gray-800">
-                {navigation.text}
-              </span>
-            </div>
-          </Link>
-        ))} */}
-        <Link to="/portal" className="text-sm cursor-pointer sm:text-lg pr-2">
+        {/* Navigation/Filter Buttons */}
+        <div className="flex space-x-2 overflow-x-auto">
+          {navigation.map((nav, index) => (
+            <button
+              key={index}
+              onClick={nav.action}
+              className={`
+                px-3 py-1 rounded-lg transition-colors duration-200 
+                ${
+                  selectedHashtag === `#${nav.text}` ||
+                  (nav.text === "All" && !selectedHashtag)
+                    ? "bg-purple-800 text-white"
+                    : "hover:bg-purple-800 text-white"
+                }
+              `}
+            >
+              {nav.text}
+            </button>
+          ))}
+        </div>
+        <Link
+          to="/portal"
+          className="text-sm cursor-pointer sm:text-lg pr-2 font-bold"
+        >
           Back to Portal →
         </Link>
       </div>
       <div className="p-4 mt-16">
         <h1 className="text-2xl font-bold pb-12">Design Page</h1>
+        {selectedHashtag && ` - ${selectedHashtag}`}
 
         <Masonry
           breakpointCols={breakpointColumns}
           className="flex gap-4"
           columnClassName="masonry-column"
         >
-          {images.map((image, index) => (
+          {filteredImages.map((image, index) => (
             <div
               key={index}
               className="mb-4 cursor-pointer"
