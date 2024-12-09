@@ -5,7 +5,7 @@ import websiteIcon from "../assets/icons/coding.png";
 import animationIcon from "../assets/icons/animate.png";
 import feedsIcon from "../assets/icons/story.png";
 import ContactUs from "../assets/icons/messenger.png";
-import Slider from "../components/Slider";
+// import Slider from "../components/Slider";
 
 const Home = () => {
   const services = [
@@ -58,9 +58,9 @@ const Home = () => {
 
   return (
     <div className="relative z-0">
-      <div className="flex flex-col justify-center items-center w-full mt-10 -mb-10">
+      <div className="flex flex-col justify-center items-center w-full mt-40 ">
         {/* Kurangi margin bottom */}
-        <Slider />
+        {/* <Slider /> */}
       </div>
 
       {/* Services Navigation */}

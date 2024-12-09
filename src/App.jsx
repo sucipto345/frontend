@@ -63,7 +63,7 @@ function App() {
       <Routes>
         {/* Rute yang menggunakan Layout */}
         <Route element={<Layout scrollToSection={scrollToSection} />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/design" element={<Design />} />
           <Route path="/template" element={<Template />} />
           <Route path="/feeds" element={<Feeds />} />
@@ -76,7 +76,7 @@ function App() {
 
         {/* Rute tanpa Layout */}
         <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/portal" element={<Portal />} />
+        <Route path="/" element={<Portal />} />
         <Route path="/pernikahan" element={<Pernikahan1 />}></Route>
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
