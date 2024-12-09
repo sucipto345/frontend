@@ -77,7 +77,7 @@ const Portal = () => {
               <a href="https://whatsapp.com/channel/0029VarAXPl7tkjEIzBbXq3r" className=" text-white p-3 rounded-full hover:bg-purple-900 transition-all hover:-translate-y-1">
               <img src={whatsappIcon} className='w-12'/>
               </a>
-              <a href="https://t.me/InstayCreative_ISC" className=" text-white p-3 rounded-full hover:bg-purple-900 transition-all hover:-translate-y-1">
+              <a href="https://t.me/InStayCreative_ISCs" className=" text-white p-3 rounded-full hover:bg-purple-900 transition-all hover:-translate-y-1">
               <img src={telegramIcon} className='w-12'/>
               </a>
             </div>
