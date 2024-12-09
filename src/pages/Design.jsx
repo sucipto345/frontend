@@ -148,7 +148,7 @@ const Design = () => {
     <div className="min-h-screen bg-gray-900 text-white pb-24">
       <div className="flex justify-between w-full py-10 px-5">
         <Link
-          to="/"
+          to="/home"
           className="text-sm cursor-pointer sm:text-lg pl-2 font-bold"
         >
           ← Back to Home
@@ -174,7 +174,7 @@ const Design = () => {
           ))}
         </div>
         <Link
-          to="/portal"
+          to="/"
           className="text-sm cursor-pointer sm:text-lg pr-2 font-bold"
         >
           Back to Portal →

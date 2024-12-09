@@ -43,10 +43,10 @@ const Feeds = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white pb-24">
       <div className="flex justify-between w-full py-4">
-        <Link to="/" className="text-lg cursor-pointer pl-12">
+        <Link to="/home" className="text-lg cursor-pointer pl-12">
           ← Back to Home
         </Link>
-        <Link to="/portal" className="text-lg cursor-pointer pr-12">
+        <Link to="/" className="text-lg cursor-pointer pr-12">
           Back to Portal →
         </Link>
       </div>
